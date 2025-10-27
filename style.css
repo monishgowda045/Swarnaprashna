@@ -1,0 +1,189 @@
+/* General Styling & Background */
+body {
+    /* Color picked from the background of the image (a light, warm tan/beige) */
+    background-color: #f3edd9; 
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Header Styling */
+.page-header {
+    background-color: #d1b48b; /* Slightly darker tan for the header band */
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.page-header h1 {
+    font-family: 'Playfair Display', serif; /* Elegant font for the main title */
+    color: #4b3621; /* Dark brown text color */
+    font-size: 2.5em;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+/* Product Container - Using Flexbox to lay out cards side-by-side */
+.product-container {
+    display: flex;
+    gap: 50px; /* Space between the two product cards */
+    padding: 20px;
+}
+
+/* Individual Product Card Styling */
+.product-card {
+    background-color: white;
+    border: 1px solid #d1b48b;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    width: 300px; /* Fixed width for the cards */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover {
+    transform: translateY(-5px); /* Lift card on hover for a nice effect */
+}
+
+.product-card h2 {
+    color: #4b3621;
+    font-size: 1.5em;
+    margin-top: 0;
+    border-bottom: 2px solid #f3edd9;
+    padding-bottom: 10px;
+}
+
+.description {
+    font-style: italic;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+/* Image Wrapper for Visual Cropping */
+.image-wrapper {
+    overflow: hidden;
+    height: 300px; /* Standard height for the image area */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Positioning the image to show only the small bottle */
+.small-bottle img {
+    /* Shifting the image to the right to hide the big bottle */
+    transform: translateX(10%); 
+    height: 100%; /* Fill the height of the wrapper */
+    width: auto;
+}
+
+/* Positioning the image to show only the big bottle */
+.large-bottle img {
+    /* Shifting the image to the left to hide the small bottle */
+    transform: translateX(-10%); 
+    height: 100%; /* Fill the height of the wrapper */
+    width: auto;
+}
+
+/* Price Details Styling */
+.price-details {
+    margin-bottom: 25px;
+    padding: 10px;
+    background-color: #f9f6f0;
+    border-radius: 5px;
+}
+
+.original-price {
+    color: #a00; /* Reddish color for crossed-out price */
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+
+.final-price {
+    font-size: 1.8em;
+    color: #1a7a3b; /* A nice green for the final price */
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.discount-label {
+    background-color: #ffcc00; /* Bright label for the discount */
+    color: #4b3621;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.7em;
+    font-weight: normal;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+/* Add to Cart Button Styling */
+.add-to-cart-btn {
+    background-color: #d1b48b; /* Button color matching the header */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #a38c6d; /* Darker shade on hover */
+}
+
+.add-to-cart-btn i {
+    margin-right: 8px; /* Space between icon and text */
+}
+
+/* Responsive adjustments for smaller screens (e.g., mobile) */
+@media (max-width: 768px) {
+    .product-container {
+        flex-direction: column; /* Stack cards vertically */
+        gap: 30px;
+    }
+    .product-card {
+        width: 80%; /* Make cards take up most of the screen width */
+    }
+}
+
+/* --- Notification Styling (for simulated Add to Cart) --- */
+
+#notification-area {
+    /* Fixed position to always be visible at the top */
+    position: fixed; 
+    top: -50px; /* Start off-screen (above the top of the viewport) */
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* Appearance */
+    background-color: #1a7a3b; /* Use the final price green color */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Ensure it stays on top of everything */
+    opacity: 0;
+    
+    /* Animation for smooth slide-in/slide-out */
+    transition: top 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+/* Class added by JavaScript to show the notification */
+#notification-area.show {
+    top: 20px; /* Slide down to 20px from the top */
+    opacity: 1;
+}
